@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAYA</title>
+    <style>
+        body {
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 90%;
+            width: 600px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+        }
+        h1 {
+            color: skyblue;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        label, input, button {
+            margin: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        label {
+            color: pink;
+        }
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            width: calc(100% - 22px);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .results {
+            margin-top: 20px;
+            color: orange;
+            font-size: 1.2rem;
+        }
+        .note {
+            color: yellow;
+            font-size: 0.9rem;
+        }
+        footer {
+            margin-top: 20px;
+            color: white;
+            font-size: 0.9rem;
+        }
+        .linkedin-icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AAYA</h1>
+        <label for="length">Length</label>
+        <input type="number" id="length" name="length">
+        <br>
+        <label for="width">Width</label>
+        <input type="number" id="width" name="width">
+        <br>
+        <button onclick="calculate()">Submit</button>
+        <button onclick="resetFields()">Continue</button>
+        <button onclick="exitPage()">Exit</button>
+        <p class="note">**Enter the measurements in the same units!</p>
+        <div class="results">
+            <p id="aaya">AAYA</p>
+            <p id="dhana">DHANA</p>
+            <p id="rena">RENA</p>
+            <p id="amsha">AMSHA</p>
+            <p id="aayassu">AAYASSU</p>
+        </div>
+    </div>
+
+    <footer>
+        <p class="container"> Copyright © 2024 Channaveeragouda | Rights Reserved <br>
+        <a href="https://www.linkedin.com/in/channaveeragouda-mali-patil-a8753026a/" target="_blank">
+            <img src="linkedin.png" alt="LinkedIn" class="linkedin-icon">
+        </a></p>
+    </footer>
+
+    <script>
+        function calculate() {
+            const length = parseInt(document.getElementById('length').value);
+            const width = parseInt(document.getElementById('width').value);
+            const c = length * width;
+            const y = c * 9;
+            const f = y % 8;
+            let aayaText = "";
+
+            switch (f) {
+                case 1:
+                    aayaText = "DWAJAYA";
+                    break;
+                case 2:
+                    aayaText = "DHUMRYA";
+                    break;
+                case 3:
+                    aayaText = "SIHMAYA";
+                    break;
+                case 4:
+                    aayaText = "SHWANAYA";
+                    break;
+                case 5:
+                    aayaText = "VRUSHABHAYA";
+                    break;
+                case 6:
+                    aayaText = "KHARAYA";
+                    break;
+                case 7:
+                    aayaText = "GAJAYA";
+                    break;
+                case 0:
+                    aayaText = "KHAKHAYA";
+                    break;
+            }
+
+            document.getElementById('aaya').textContent = aayaText;
+            document.getElementById('dhana').textContent = "DHANA=" + (c * 8 % 12);
+            document.getElementById('rena').textContent = "RENA=" + (c * 3 % 12);
+            document.getElementById('amsha').textContent = "AMSHA=" + (c * 6 % 9);
+            document.getElementById('aayassu').textContent = "AAYASSU=" + (c * 9 % 120);
+        }
+
+        function resetFields() {
+            document.getElementById('length').value = "";
+            document.getElementById('width').value = "";
+            document.getElementById('aaya').textContent = "AAYA";
+            document.getElementById('dhana').textContent = "DHANA";
+            document.getElementById('rena').textContent = "RENA";
+            document.getElementById('amsha').textContent = "AMSHA";
+            document.getElementById('aayassu').textContent = "AAYASSU";
+        }
+
+        function exitPage() {
+            window.close();
+        }
+    </script>
+</body>
+</html>
